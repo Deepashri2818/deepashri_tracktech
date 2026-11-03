@@ -1,10 +1,10 @@
 import pytest
-from pages.portfolio_page import portfolio_page_class
-from utils.csv_data_loader import CSVDataLoader
+
+from pages.portfolio import portfolio
 
 @pytest.mark.smoke
-def test_portfolio(page):
-    expected_titles = CSVDataLoader.load_expected_titles("testdata/portfolio.csv")
+def test_portfolio_select(page):
+    portfolio_obj = portfolio(page)
 
-    abpout_menu=portfolio_page_class(page)
-    abpout_menu.click_portfolio(expected_titles) 
+    portfolio_obj.portfolio_selection()
+
